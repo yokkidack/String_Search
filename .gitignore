@@ -1,1 +1,9 @@
 .DS_Store
+_3rdParty/*
+cmake_install.cmake
+Makefile
+CMakeFiles/*
+CMakeCache.txt
+CTestTestfile.cmake
+string_search
+test_target
