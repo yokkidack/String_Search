@@ -13,6 +13,7 @@ namespace Rabin_Karp{
     int Search(std::vector<char> string_, std::vector<char> substring_){
         int n = string_.size();
         int m = substring_.size();
+        if (n == 0) return -1;
         int h = pow(ALPHABET_LENGTH, m-1);
         h %= SOME_PRIME;
 

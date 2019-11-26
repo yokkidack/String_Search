@@ -23,7 +23,7 @@ int Search(std::vector<char> string_, std::vector<char> substring_)
 {
     int n = string_.size();
     int m = substring_.size();
-
+    if (n == 0) return -1;
     for (int i = 0; i <= n - m; i++) {
         int j;
         for (j = 0; j < m; j++) {
