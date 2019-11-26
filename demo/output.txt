@@ -1,0 +1,9 @@
+Legend: -1 if not found, -2 if not yet implemented, other number if found, else who knows
+Naive
+5
+Boyer Moore
+5
+Knut Morris Pratt
+-2
+Rabin Karp
+5
