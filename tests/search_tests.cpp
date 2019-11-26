@@ -19,9 +19,8 @@ trivial_sol.ans
 
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-/*
-#define CATCH_CONFIG_MAIN
-#include "catch.hpp"
+#include <fstream>
+#include <streambuf>
 
 #include "../algorithms/naive_string_search.hxx"
 #include "../algorithms/boyer_moore_search.hxx"
@@ -33,6 +32,115 @@ TEST_CASE("dummy test")
 {
     REQUIRE(1 != 0);
 }
+
+TEST_CASE("Naive Nothrow via file")
+{
+
+    std::fstream in_string("nothrow.dat", std::ios_base::in);
+    std::string a((std::istreambuf_iterator<char>(in_string)),
+        (std::istreambuf_iterator<char>()));
+    in_string.close();
+    a = a.substr(0, a.size() - 1);
+    std::fstream in_substring("nothrow.needle", std::ios_base::in);
+    std::string b((std::istreambuf_iterator<char>(in_substring)),
+        (std::istreambuf_iterator<char>()));
+    in_substring.close();
+    b = b.substr(0, b.size() - 1);
+    std::vector<char> string_(a.begin(), a.end());
+    std::vector<char> substring_(b.begin(), b.end());
+    REQUIRE_NOTHROW(Naive::Search(string_, substring_));
+}
+
+TEST_CASE("Rabin_Karp Nothrow via file")
+{
+
+    std::fstream in_string("nothrow.dat", std::ios_base::in);
+    std::string a((std::istreambuf_iterator<char>(in_string)),
+        (std::istreambuf_iterator<char>()));
+    in_string.close();
+    a = a.substr(0, a.size() - 1);
+    std::fstream in_substring("nothrow.needle", std::ios_base::in);
+    std::string b((std::istreambuf_iterator<char>(in_substring)),
+        (std::istreambuf_iterator<char>()));
+    in_substring.close();
+    b = b.substr(0, b.size() - 1);
+    std::vector<char> string_(a.begin(), a.end());
+    std::vector<char> substring_(b.begin(), b.end());
+    REQUIRE_NOTHROW(Rabin_Karp::Search(string_, substring_));
+}
+
+TEST_CASE("Knut_Morris_Pratt Nothrow via file")
+{
+
+    std::fstream in_string("nothrow.dat", std::ios_base::in);
+    std::string a((std::istreambuf_iterator<char>(in_string)),
+        (std::istreambuf_iterator<char>()));
+    in_string.close();
+    a = a.substr(0, a.size() - 1);
+    std::fstream in_substring("nothrow.needle", std::ios_base::in);
+    std::string b((std::istreambuf_iterator<char>(in_substring)),
+        (std::istreambuf_iterator<char>()));
+    in_substring.close();
+    b = b.substr(0, b.size() - 1);
+    std::vector<char> string_(a.begin(), a.end());
+    std::vector<char> substring_(b.begin(), b.end());
+    REQUIRE_NOTHROW(Knut_Morris_Pratt::Search(string_, substring_));
+}
+
+TEST_CASE("Naive search test")
+{
+    std::string a{"hellohiahoyhaloprivethi"};
+    std::string b{"hi"};
+    std::vector<char> string_(a.begin(), a.end());
+    std::vector<char> substring_(b.begin(), b.end());
+    REQUIRE(Naive::Search(string_, substring_) == 5);
+}
+
+TEST_CASE("Naive search test via file")
+{
+
+
+    /*
+    std::ifstream t("file.txt");
+std::string str;
+
+t.seekg(0, std::ios::end);
+str.reserve(t.tellg());
+t.seekg(0, std::ios::beg);
+
+str.assign((std::istreambuf_iterator<char>(t)),
+            std::istreambuf_iterator<char>());
+    */
+    std::ifstream in_string("trivial_dummy.dat", std::ios_base::in);
+    std::string a;
+    a.assign( (std::istreambuf_iterator<char>(in_string) ),
+                (std::istreambuf_iterator<char>()    ) );
+    std::fstream in_substring("trivial_dummy.needle", std::ios_base::in);
+    std::string b((std::istreambuf_iterator<char>(in_substring)),
+        (std::istreambuf_iterator<char>()));
+    in_substring.close();
+    b = b.substr(0, b.size() - 1);
+    std::vector<char> string_(a.begin(), a.end());
+    std::vector<char> substring_(b.begin(), b.end());
+    REQUIRE(substring_ != string_);
+}
+/*
+READING FROM FILE SAMPLE
+
+std::fstream in_string(argv[1], std::ios_base::in);
+std::string a((std::istreambuf_iterator<char>(in_string)),
+    (std::istreambuf_iterator<char>()));
+in_string.close();
+a = a.substr(0, a.size() - 1);
+std::fstream in_substring(argv[2], std::ios_base::in);
+std::string b((std::istreambuf_iterator<char>(in_substring)),
+    (std::istreambuf_iterator<char>()));
+in_substring.close();
+b = b.substr(0, b.size() - 1);
+std::vector<char> string_(a.begin(), a.end());
+std::vector<char> substring_(b.begin(), b.end())
+
+
 
 TEST_CASE("Naive no except")
 {
@@ -88,7 +196,7 @@ TEST_CASE("BM search test with only bad houristic")
     std::vector<char> substring_(b.begin(), b.end());
     REQUIRE(Boyer_Moore::Search_bad(string_, substring_) == 5);
 }
-/*
+
 TEST_CASE("Boyer Moore no except")
 {
     std::string a{"hellohiahoyhaloprivethi"};
