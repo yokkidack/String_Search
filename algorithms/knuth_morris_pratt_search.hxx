@@ -2,8 +2,42 @@
 
 namespace Knut_Morris_Pratt{
 
-    int Search(std::vector<char> string_, std::vector<char> substring_){
-        return -2;
+    int Search(const std::vector<char>& S, const std::vector<char>& pattern)
+    {
+        if (S.size() == 0) return -1;       // в пустой не найти,
+        if (pattern.size() == 0) return 0;  // пустую не потерять
+
+    	std::vector<int> pf (pattern.size());
+    	pf[0] = 0;
+        //
+        // Proprocessing
+        //
+    	for (int k = 0, i = 1; i < pattern.size(); ++i)
+    	{
+    		while ((k > 0) && (pattern[i] != pattern[k]))
+    			k = pf[k-1];
+
+    		if (pattern[i] == pattern[k])
+    			k++;
+
+    		pf[i] = k;
+    	}
+
+        //
+        // Search
+        //
+    	for (int k = 0, i = 0; i < S.size(); ++i)
+    	{
+    		while ((k > 0) && (pattern[k] != S[i]))
+    			k = pf[k-1];
+
+    		if (pattern[k] == S[i])
+    			k++;
+
+    		if (k == pattern.size())
+    			return (i - pattern.size() + 1);
+    	}
+
+    	return -1;
     }
-    
 }
