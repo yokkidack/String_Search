@@ -4,6 +4,6 @@ Naive
 Boyer Moore
 5
 Knut Morris Pratt
--2
+5
 Rabin Karp
 5
