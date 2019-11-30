@@ -343,6 +343,7 @@ TEST_CASE("Rabin_Karp search test - match at the end of line via file")
     REQUIRE_NOTHROW(Rabin_Karp::Search(string_, substring_));
     REQUIRE(Rabin_Karp::Search(string_, substring_) != -1);
 }
+// подстроку в строке сложно найти, но не надо делать для меня исключений
 TEST_CASE("BM_bad search test - match at the end of line via file")
 {
     std::string name {TEST_PATH};
