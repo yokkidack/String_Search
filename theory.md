@@ -26,8 +26,32 @@
 | № | класс                                          | описание класса                 | Примеры |
 |---|------------------------------------------------|---------------------------------|---------|
 | 1.| `Алгоритмы поиска одного паттерна`             | Подстрока или Паттерн всего один| [Наивный алгоритм](#naiv), [Алгоритм поиска подстроки Рабина - Карпа](#rk), [Алгоритм поиска строки Бойера — Мура](#bm), [Алгоритм Кнута — Морриса — Пратта (КМП-алгоритм)](#kmp), [Алгоритм поиска подстроки BNDM](#bndm) |
-| 2.| `Алгоритмы поиска конечного числа паттернов`   | Поиск происходит для конечного множества подстрок или паттернов | [Алгоритм Ахо — Корасик](https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm), Алгоритм поиска подстроки Рабина - Карпа (для нескольких подстрок),  [Алгоритм Ву - Манбера (Wu-Manber)](#wu)|
-| 3.| `Алгоритмы поиска бесконечного числа паттернов`| Поиск происходит для бесконечного множества подстрок или паттернов, паттерны не перечисляются, но для них используются [регулярные выражения](https://en.wikipedia.org/wiki/Regular_expression) или [рекулярная грамматика](https://en.wikipedia.org/wiki/Regular_grammar) |  |
+| 2.| `Алгоритмы поиска конечного числа паттернов`   | Поиск происходит для конечного множества подстрок или паттернов | [Алгоритм Ахо — Корасик](#aho), Алгоритм поиска подстроки Рабина - Карпа (для нескольких подстрок),  [Алгоритм Ву - Манбера (Wu-Manber)](#wu)|
+| 3.| `Алгоритмы поиска бесконечного числа паттернов`| Поиск происходит для бесконечного множества подстрок или паттернов, паттерны не перечисляются, но для них используются [регулярные выражения](#regex) или [регулярная грамматика](#reggram) |  |
+
+2. `Классификация по наличию преобработки строки/подстроки`
+
+|                             |  `Нет преобработки строки`  |  `Есть преобработка строки`       |
+|-----------------------------|-----------------------------|-----------------------------------|
+|`Нет преобработки подстроки` | Элементарные алгоритмы      | [factor automata](#faco), индексные методы (index methods)   |
+|`Есть преобработка подстроки`| [pattern matching automata](#pma)  |  [pattern matching automata](#pma), [factor automata](#faco), подписные методы (signature methods)  |
+
+| класс                                                         | пример                    |
+|---------------------------------------------------------------|---------------------------|
+| Элементарные алгоритмы                                        | [Наивный алгоритм](#naiv) |
+| [factor automata](#faco)||
+| индексные методы (index methods)                              ||
+| [pattern matching automata](#pma)||
+| подписные методы (signature methods)                          | Модифицированные алгоритмы для поиска n-грамм вместо символов, [больше информации, примеры реализации и многое другое](#witold)|
+
+3. `Классификация по стратегии` [*](#gonzalo)
+
+| № | класс                                         | описание класса                 | Примеры |
+|---|-----------------------------------------------|---------------------------------|---------|
+| 1.| `Сопоставление по префиксу в первую очередь`  |   | [Knuth-Morris-Pratt](#kmp), [Shift-And](#shand), Aho-Corasick
+| 2.| `Сопоставление по суффиксу в первую очередь`  |
+| 3.| `Сопоставление по наилучшему критерию`        |                                 | [BNDM](#bndm), [BOM](#bom), Set-BOM |
+| 4.| `Прочие`                                      |
 
 
 Алгоритм поиска подстроки в стоке - алгоритм позволяющий определить факт вхождения подстроки в строку и также определить в случае вхождения позицию на которой находится искомая подстрока.
@@ -125,7 +149,7 @@ m - длина подстроки
 - Наивный алгоритм я выбрал потому что с ним легко сравнивать все остальные. Он самый простой и "глупый", по этому на его фоне хорошо покажут себя его улучшения.
 - Алгоритм Рабина карпа я выбрал потому что он выделяется на фоне остальных алгоритмов, про которые я читал необычной механикой - использованием хэшей. Мне было интересно рассмотреть такой подход.
 - Алгоритм поиска строки Бойера - Мура я выбрал потому, что его:
-- - Используют как эталон для оценки алгоритмов поиска подстроки в научной литературе [Hume; Sunday (1991). "Fast String Searching". Software: Practice and Experience. 21 (11): 1221–1248. doi:10.1002/spe.4380211105 {https://doi.org/10.1002%2Fspe.4380211105}]
+- - Используют как эталон для оценки алгоритмов поиска подстроки в научной литературе [*](#hume)
 - - Часто используют для функций "поиск" и "замена" в текстовых редакторах
 - Алгоритм КМП был выбран из-за того, что его используют биоинформатике в решении "alignment problem" (на сколько я понял, суть задачи заключается в поиске участка генома в базе геномов, искомая подстрока порядка 100 тысяч знаков, база миллионы - миллиарды знаков).
 
@@ -134,3 +158,13 @@ m - длина подстроки
 1. <a name="wu"> Wu S. and U.Manber, “A Fast Algorithm for MultiPattern Searching,” Technical Report TR-94-17
 Department of Computer Science, University of Arizona,
 Tucson, AZ (May 1994).</a>
+2. <a name="witold">WRiad Mokadem; Witold Litwin (2007), Fast nGramBased String Search Over Data Encoded Using Algebraic Signatures, 33rd International Conference on Very Large Data Bases (VLDB) [link](http://www.cse.scu.edu/~tschwarz/Papers/vldb07_final.pdf)</a>
+3. <a name="gonzalo">Navarro, Gonzalo & Raffinot, Mathieu. (2002). Flexible pattern matching in strings. Practical on-line search algorithms for texts and biological sequences. 10.1017/CBO9781316135228.</a>
+4. <a name="bom">Christian Charras, Thierry LecroqBackward. Oracle Matching algorithm [link](https://www-igm.univ-mlv.fr/~lecroq/string/bom.html)</a>
+5. <a name="shand">Wikipedia contributors. (2018, January 12). Bitap algorithm. In Wikipedia, The Free Encyclopedia. Retrieved 14:29, December 2, 2019, from https://en.wikipedia.org/w/index.php?title=Bitap_algorithm&oldid=820002037</a>
+6. <a name="aho">Wikipedia contributors. (2019, November 2). Aho–Corasick algorithm. In Wikipedia, The Free Encyclopedia. Retrieved 14:30, December 2, 2019, from https://en.wikipedia.org/w/index.php?title=Aho%E2%80%93Corasick_algorithm&oldid=924182120</a>
+7. <a name="reggram">Wikipedia contributors. (2019, September 8). Regular grammar. In Wikipedia, The Free Encyclopedia. Retrieved 14:31, December 2, 2019, from https://en.wikipedia.org/w/index.php?title=Regular_grammar&oldid=914589018</a>
+8. <a name="regex">Wikipedia contributors. (2019, December 2). Regular expression. In Wikipedia, The Free Encyclopedia. Retrieved 14:32, December 2, 2019, from https://en.wikipedia.org/w/index.php?title=Regular_expression&oldid=928849112</a>
+9. <a name="hume">Hume; Sunday (1991). "Fast String Searching". Software: Practice and Experience. 21 (11): 1221–1248. doi:10.1002/spe.4380211105 {https://doi.org/10.1002%2Fspe.4380211105}</a>
+10. <a name="faco">Wikipedia contributors. (2019, August 15). Factor oracle. In Wikipedia, The Free Encyclopedia. Retrieved 14:34, December 2, 2019, from https://en.wikipedia.org/w/index.php?title=Factor_oracle&oldid=910966476</a>
+11. <a name="pma">http://www-igm.univ-mlv.fr/~mac/REC/B4.html</a>
