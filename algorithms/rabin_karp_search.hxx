@@ -14,12 +14,19 @@ namespace Rabin_Karp{
         int n = string_.size();
         int m = substring_.size();
         if (n == 0) return -1;
-        int h = pow(ALPHABET_LENGTH, m-1);
-        h %= SOME_PRIME;
-
+        //
+        // hash_base = ALPHABET_LENGTH ^ (m-1) mod SOME_PRIME
+        //
+        int hash_base = pow(ALPHABET_LENGTH, m-1);
+        hash_base %= SOME_PRIME;
+        //
+        // Preprocessing
+        //
         int substring_hash = hash_function(substring_, m);
+        //
+        // Searching
+        //
         int window_hash = hash_function(string_, m);
-
         for (auto i{0}; i <= n - m; i++){
             if (window_hash == substring_hash){
                 auto j{0};
@@ -30,9 +37,15 @@ namespace Rabin_Karp{
                 }
                 if (j == m) return i;
             }
+            //
+            // new hash processing
+            //
             if ( i < n - m )
             {
-                window_hash = (ALPHABET_LENGTH*(window_hash - string_[i]*h) + string_[i+m])%SOME_PRIME;
+                window_hash = (
+                    ALPHABET_LENGTH
+                    * (window_hash - string_[i] * hash_base)
+                    + string_[i+m]) % SOME_PRIME;
                 if (window_hash < 0)
                 window_hash += SOME_PRIME;
             }
