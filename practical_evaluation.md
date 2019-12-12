@@ -37,7 +37,7 @@
 
 ### Результаты.
 
-![10-30](/img/needle10letter30.png)
-![10-4](/img/needle10letter4.png)
-![100-30](/img/needle100letter30.png)
-![100-4](/img/needle100letter4.png)
+![10-30](/img/needle10letters30.png)
+![10-4](/img/needle10letters4.png)
+![100-30](/img/needle100letters30.png)
+![100-4](/img/needle100letters4.png)
