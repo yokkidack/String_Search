@@ -6,12 +6,12 @@
 
 namespace Rabin_Karp{
 
-    int hash_function(std::vector<char> string, int n){
+    int hash_function(std::vector<char> & string, int n){
         int hash = 0;
         for (auto i{0}; i < n; hash = (ALPHABET_LENGTH * hash + string[i]) % SOME_PRIME, i++);
         return hash;
     }
-    int Search(std::vector<char> string_, std::vector<char> substring_){
+    int Search(std::vector<char> & string_, std::vector<char> & substring_){
         int n = string_.size();
         int m = substring_.size();
         if (n == 0) return -1;
@@ -58,12 +58,12 @@ namespace Rabin_Karp{
 }
 namespace Rabin_Karp_for_4_letter_alphabet{
 
-    int hash_function(std::vector<char> string, int n){
+    int hash_function(std::vector<char> & string, int n){
         int hash = 0;
         for (auto i{0}; i < n; hash = (ALPHABET_LENGTH_SHORT * hash + string[i]) % SOME_PRIME, i++);
         return hash;
     }
-    int Search(std::vector<char> string_, std::vector<char> substring_){
+    int Search(std::vector<char> & string_, std::vector<char> & substring_){
         int n = string_.size();
         int m = substring_.size();
         if (n == 0) return -1;

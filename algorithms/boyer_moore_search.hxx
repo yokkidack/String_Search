@@ -11,7 +11,7 @@ bool test()
     return true;
 }
 
-auto bad_char_houristic(std::vector<char> substring, std::vector<int> bad_chars)
+auto bad_char_houristic(std::vector<char> & substring, std::vector<int> & bad_chars)
     -> std::vector<int>
 {
     int m = substring.size();
@@ -24,7 +24,7 @@ auto bad_char_houristic(std::vector<char> substring, std::vector<int> bad_chars)
     return bad_chars;
 }
 
-auto calc_suff(std::vector<char> substring, std::vector<int> good_suff)
+auto calc_suff(std::vector<char> & substring, std::vector<int> & good_suff)
     -> std::vector<int>
 {
     int m = substring.size();
@@ -43,7 +43,7 @@ auto calc_suff(std::vector<char> substring, std::vector<int> good_suff)
     return good_suff;
 }
 
-auto good_suffix_houristic(std::vector<char> substring, std::vector<int> good_suff)
+auto good_suffix_houristic(std::vector<char> & substring, std::vector<int> & good_suff)
     -> std::vector<int>
 {
     int i{ 0 }, j{ 0 }, m = substring.size();
@@ -75,7 +75,7 @@ auto good_suffix_houristic(std::vector<char> substring, std::vector<int> good_su
     0 <= int : if found, int - place of hit
 
     */
-int Search_bad(std::vector<char> string_, std::vector<char> substring_)
+int Search_bad(std::vector<char> & string_, std::vector<char> & substring_)
 {
     int n = string_.size();
     int m = substring_.size();
@@ -113,7 +113,7 @@ int Search_bad(std::vector<char> string_, std::vector<char> substring_)
     -1 : if not found
     0 <= int : if found, int - place of hit
     */
-int Search(std::vector<char> string_, std::vector<char> substring_)
+int Search(std::vector<char> & string_, std::vector<char> & substring_)
 {
     int n = string_.size();
     int m = substring_.size();
@@ -153,7 +153,7 @@ bool test()
     return true;
 }
 
-auto bad_char_houristic(std::vector<char> substring, std::vector<int> bad_chars)
+auto bad_char_houristic(std::vector<char> & substring, std::vector<int> & bad_chars)
     -> std::vector<int>
 {
     int m = substring.size();
@@ -166,7 +166,7 @@ auto bad_char_houristic(std::vector<char> substring, std::vector<int> bad_chars)
     return bad_chars;
 }
 
-auto calc_suff(std::vector<char> substring, std::vector<int> good_suff)
+auto calc_suff(std::vector<char> & substring, std::vector<int> & good_suff)
     -> std::vector<int>
 {
     int m = substring.size();
@@ -185,7 +185,7 @@ auto calc_suff(std::vector<char> substring, std::vector<int> good_suff)
     return good_suff;
 }
 
-auto good_suffix_houristic(std::vector<char> substring, std::vector<int> good_suff)
+auto good_suffix_houristic(std::vector<char> & substring, std::vector<int> & good_suff)
     -> std::vector<int>
 {
     int i{ 0 }, j{ 0 }, m = substring.size();
@@ -217,7 +217,7 @@ auto good_suffix_houristic(std::vector<char> substring, std::vector<int> good_su
     0 <= int : if found, int - place of hit
 
     */
-int Search_bad(std::vector<char> string_, std::vector<char> substring_)
+int Search_bad(std::vector<char> & string_, std::vector<char> & substring_)
 {
     int n = string_.size();
     int m = substring_.size();
@@ -255,7 +255,7 @@ int Search_bad(std::vector<char> string_, std::vector<char> substring_)
     -1 : if not found
     0 <= int : if found, int - place of hit
     */
-int Search(std::vector<char> string_, std::vector<char> substring_)
+int Search(std::vector<char> & string_, std::vector<char> & substring_)
 {
     int n = string_.size();
     int m = substring_.size();

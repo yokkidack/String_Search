@@ -19,7 +19,7 @@ output:
 
 */
 
-int Search(std::vector<char> string_, std::vector<char> substring_)
+int Search(std::vector<char> & string_, std::vector<char> & substring_)
 {
     int n = string_.size();
     int m = substring_.size();
