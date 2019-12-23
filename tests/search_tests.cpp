@@ -52,7 +52,7 @@ TEST_CASE("BM_bad Nothrow via file")
     b = b.substr(0, b.size() - 1);
     std::vector<char> string_(a.begin(), a.end());
     std::vector<char> substring_(b.begin(), b.end());
-    REQUIRE_NOTHROW(Boyer_Moore::Search_bad(string_, substring_));
+    REQUIRE_NOTHROW(Boyer_Moore::Search(string_, substring_));
 }
 TEST_CASE("Knut_Morris_Pratt Nothrow via file")
 {
@@ -117,7 +117,7 @@ TEST_CASE("BM_bad search test")
     std::string b{"hi"};
     std::vector<char> string_(a.begin(), a.end());
     std::vector<char> substring_(b.begin(), b.end());
-    REQUIRE(Boyer_Moore::Search_bad(string_, substring_) == 5);
+    REQUIRE(Boyer_Moore::Search(string_, substring_) == 5);
 }
 TEST_CASE("Rabin_Karp search test")
 {
@@ -163,7 +163,7 @@ TEST_CASE("BM_bad search test via file")
     b = b.substr(0, b.size() - 1);
     std::vector<char> string_(a.begin(), a.end());
     std::vector<char> substring_(b.begin(), b.end());
-    REQUIRE(Boyer_Moore::Search_bad(string_, substring_) == 5);
+    REQUIRE(Boyer_Moore::Search(string_, substring_) == 5);
 }
 TEST_CASE("Knut_Morris_Pratt search test via file")
 {
@@ -281,8 +281,8 @@ TEST_CASE("BM_bad search test - match at the end of line via file")
     b = b.substr(0, b.size() - 1);
     std::vector<char> string_(a.begin(), a.end());
     std::vector<char> substring_(b.begin(), b.end());
-    REQUIRE_NOTHROW(Boyer_Moore::Search_bad(string_, substring_));
-    REQUIRE(Boyer_Moore::Search_bad(string_, substring_) != -1);
+    REQUIRE_NOTHROW(Boyer_Moore::Search(string_, substring_));
+    REQUIRE(Boyer_Moore::Search(string_, substring_) != -1);
 }
 
 TEST_CASE("human_en_000 Naive")
@@ -418,7 +418,7 @@ TEST_CASE("human_en_001 BM_bad")
     std::vector<char> string_(a.begin(), a.end());
     std::vector<char> substring_(b.begin(), b.end());
     int ans = stoi(c);
-    REQUIRE(Boyer_Moore::Search_bad(string_, substring_) == ans);
+    REQUIRE(Boyer_Moore::Search(string_, substring_) == ans);
 }
 TEST_CASE("human_it_001 Naive")
 {

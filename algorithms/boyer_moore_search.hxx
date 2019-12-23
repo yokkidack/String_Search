@@ -11,7 +11,7 @@ bool test()
     return true;
 }
 
-auto bad_char_houristic(std::vector<char> & substring, std::vector<int> & bad_chars)
+auto bad_char_houristic(std::vector<char>& substring, std::vector<int>& bad_chars)
     -> std::vector<int>
 {
     int m = substring.size();
@@ -24,7 +24,7 @@ auto bad_char_houristic(std::vector<char> & substring, std::vector<int> & bad_ch
     return bad_chars;
 }
 
-auto calc_suff(std::vector<char> & substring, std::vector<int> & good_suff)
+auto calc_suff(std::vector<char>& substring, std::vector<int>& good_suff)
     -> std::vector<int>
 {
     int m = substring.size();
@@ -43,7 +43,7 @@ auto calc_suff(std::vector<char> & substring, std::vector<int> & good_suff)
     return good_suff;
 }
 
-auto good_suffix_houristic(std::vector<char> & substring, std::vector<int> & good_suff)
+auto good_suffix_houristic(std::vector<char>& substring, std::vector<int>& good_suff)
     -> std::vector<int>
 {
     int i{ 0 }, j{ 0 }, m = substring.size();
@@ -75,7 +75,7 @@ auto good_suffix_houristic(std::vector<char> & substring, std::vector<int> & goo
     0 <= int : if found, int - place of hit
 
     */
-int Search_bad(std::vector<char> & string_, std::vector<char> & substring_)
+int Search(std::vector<char>& string_, std::vector<char>& substring_)
 {
     int n = string_.size();
     int m = substring_.size();
@@ -100,52 +100,10 @@ int Search_bad(std::vector<char> & string_, std::vector<char> & substring_)
     }
     return -1;
 }
-
-/*
-    \breif this is a searching function with Boyer-Moore string algorithm
-
-    input:
-    string_ : string were search is needed
-    substring_ : string that is being searched
-
-    output:
-
-    -1 : if not found
-    0 <= int : if found, int - place of hit
-    */
-int Search(std::vector<char> & string_, std::vector<char> & substring_)
-{
-    int n = string_.size();
-    int m = substring_.size();
-
-    std::vector<int> boyer_moore_good_suffix_table;
-    std::vector<int> boyer_moore_bad_char_table;
-
-    boyer_moore_good_suffix_table
-        = good_suffix_houristic(substring_, boyer_moore_good_suffix_table);
-
-    boyer_moore_bad_char_table
-        = bad_char_houristic(substring_, boyer_moore_bad_char_table);
-
-    int pattern_shift{ 0 };
-
-    auto j{ 0 }, i{ 0 };
-    while (j <= n - m) {
-        for (i = n - 1; i >= 0 && substring_[i] == string_[j + i]; i--)
-            ;
-
-        if (i < 0) {
-            return j;
-        }
-        else
-            j
-                += max(boyer_moore_good_suffix_table[i],
-                    boyer_moore_bad_char_table[string_[i + j]] - n + i + 1);
-    }
-    return -1;
 }
-}
+
 namespace Boyer_Moore_for_4_letter_alphabet {
+
 int max(int a, int b) { return (a > b) ? a : b; }
 
 bool test()
@@ -153,7 +111,7 @@ bool test()
     return true;
 }
 
-auto bad_char_houristic(std::vector<char> & substring, std::vector<int> & bad_chars)
+auto bad_char_houristic(std::vector<char>& substring, std::vector<int>& bad_chars)
     -> std::vector<int>
 {
     int m = substring.size();
@@ -166,7 +124,7 @@ auto bad_char_houristic(std::vector<char> & substring, std::vector<int> & bad_ch
     return bad_chars;
 }
 
-auto calc_suff(std::vector<char> & substring, std::vector<int> & good_suff)
+auto calc_suff(std::vector<char>& substring, std::vector<int>& good_suff)
     -> std::vector<int>
 {
     int m = substring.size();
@@ -185,7 +143,7 @@ auto calc_suff(std::vector<char> & substring, std::vector<int> & good_suff)
     return good_suff;
 }
 
-auto good_suffix_houristic(std::vector<char> & substring, std::vector<int> & good_suff)
+auto good_suffix_houristic(std::vector<char>& substring, std::vector<int>& good_suff)
     -> std::vector<int>
 {
     int i{ 0 }, j{ 0 }, m = substring.size();
@@ -217,7 +175,7 @@ auto good_suffix_houristic(std::vector<char> & substring, std::vector<int> & goo
     0 <= int : if found, int - place of hit
 
     */
-int Search_bad(std::vector<char> & string_, std::vector<char> & substring_)
+int Search(std::vector<char>& string_, std::vector<char>& substring_)
 {
     int n = string_.size();
     int m = substring_.size();
@@ -239,50 +197,6 @@ int Search_bad(std::vector<char> & string_, std::vector<char> & substring_)
         }
         else
             pattern_shift += max(1, j - boyer_moore_bad_char_table[string_[pattern_shift + j]]);
-    }
-    return -1;
-}
-
-/*
-    \breif this is a searching function with Boyer-Moore string algorithm
-
-    input:
-    string_ : string were search is needed
-    substring_ : string that is being searched
-
-    output:
-
-    -1 : if not found
-    0 <= int : if found, int - place of hit
-    */
-int Search(std::vector<char> & string_, std::vector<char> & substring_)
-{
-    int n = string_.size();
-    int m = substring_.size();
-
-    std::vector<int> boyer_moore_good_suffix_table;
-    std::vector<int> boyer_moore_bad_char_table;
-
-    boyer_moore_good_suffix_table
-        = good_suffix_houristic(substring_, boyer_moore_good_suffix_table);
-
-    boyer_moore_bad_char_table
-        = bad_char_houristic(substring_, boyer_moore_bad_char_table);
-
-    int pattern_shift{ 0 };
-
-    auto j{ 0 }, i{ 0 };
-    while (j <= n - m) {
-        for (i = n - 1; i >= 0 && substring_[i] == string_[j + i]; i--)
-            ;
-
-        if (i < 0) {
-            return j;
-        }
-        else
-            j
-                += max(boyer_moore_good_suffix_table[i],
-                    boyer_moore_bad_char_table[string_[i + j]] - n + i + 1);
     }
     return -1;
 }

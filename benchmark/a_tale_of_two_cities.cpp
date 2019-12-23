@@ -36,7 +36,7 @@ int main(){
         }
         long a  = 0;
         auto start = std::chrono::high_resolution_clock::now();
-        for (auto i{0}; i< 100; i++) a = Boyer_Moore::Search_bad(heystack, needle);
+        for (auto i{0}; i< 100; i++) a = Boyer_Moore::Search(heystack, needle);
         auto finish = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = finish - start;
 
@@ -68,7 +68,7 @@ int main(){
         }
         long a  = 0;
         auto start = std::chrono::high_resolution_clock::now();
-        for (auto i{0}; i< 100; i++) a = Boyer_Moore::Search_bad(heystack, needle);
+        for (auto i{0}; i< 100; i++) a = Boyer_Moore::Search(heystack, needle);
         auto finish = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = finish - start;
 
@@ -100,7 +100,7 @@ int main(){
         }
         long a  = 0;
         auto start = std::chrono::high_resolution_clock::now();
-        for (auto i{0}; i< 100; i++) a = Boyer_Moore::Search_bad(heystack, needle);
+        for (auto i{0}; i< 100; i++) a = Boyer_Moore::Search(heystack, needle);
         auto finish = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = finish - start;
 

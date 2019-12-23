@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
         <<"other number if found, else who knows\n";
     out << "Naive\n";
     out << output;
-    output = Boyer_Moore::Search_bad(string_, substring_);
+    output = Boyer_Moore::Search(string_, substring_);
     out << "\nBoyer Moore\n";
     out << output;
     output = Knut_Morris_Pratt::Search(string_, substring_);
