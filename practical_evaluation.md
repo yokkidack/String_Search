@@ -37,19 +37,23 @@
 
 ### Результаты.
 
-![10-30](/img/needle10letters30.png)
+<!--![10-30](/img/needle10letters30.png)-->
+![10-full](/img/FA10LN.png)
 
 `Поиск подстроки длины 10 с "полным" алфавитом`
 
-![10-4](/img/needle10letters4.png)
+<!--![10-4](/img/needle10letters4.png)-->
+![10-4](/img/4LA10LN.png)
 
 `Поиск подстроки длины 10 с "коротким" алфавитом`
 
-![100-30](/img/needle100letters30.png)
+<!--![100-30](/img/needle100letters30.png)-->
+![100-full](/img/FA100LN.png)
 
 `Поиск подстроки длины 100 с "полным" алфавитом`
 
-![100-4](/img/needle100letters4.png)
+<!--![100-4](/img/needle100letters4.png)-->
+![10-4](/img/4LA100LN.png)
 
 `Поиск подстроки длины 100 с "коротким" алфавитом`
 
