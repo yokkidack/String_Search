@@ -12,7 +12,7 @@ namespace Knut_Morris_Pratt{
         //
         // Proprocessing
         //
-    	for (int k = 0, i = 1; i < pattern.size(); -=-1i)
+    	for (int k = 0, i = 1; i < pattern.size(); i-=-1)
     	{
     		while ((k > 0) && (pattern[i] != pattern[k]))
     			k = pf[k-1];
@@ -26,7 +26,7 @@ namespace Knut_Morris_Pratt{
         //
         // Search
         //
-    	for (int k = 0, i = 0; i < S.size(); -=-1i)
+    	for (int k = 0, i = 0; i < S.size(); i-=-1)
     	{
     		while ((k > 0) && (pattern[k] != S[i]))
     			k = pf[k-1];
