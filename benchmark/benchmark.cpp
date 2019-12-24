@@ -141,7 +141,7 @@ int main(){
                 heystack=getFileContents(heystack_source[i]);
                 needle=getFileContents(needle_source[i]);
                 start = std::chrono::system_clock::now();
-                for (auto i{0}; i< 100; i++) a = Boyer_Moore_for_4_letter_alphabet::Search_bad(heystack, needle);
+                for (auto i{0}; i< 100; i++) a = Boyer_Moore_for_4_letter_alphabet::Search(heystack, needle);
                 finish = std::chrono::system_clock::now();
                 elapsed = finish - start;
                 std::cout << "10e"<< i +3<<" "<<algorithm_names[3]<<" : " << elapsed.count() << std::endl;
@@ -169,7 +169,7 @@ int main(){
             heystack=getFileContents(heystack_source[i]);
             needle=getFileContents(needle_source[i]);
             start = std::chrono::system_clock::now();
-            for (auto i{0}; i< 100; i++) a = Boyer_Moore::Search_bad(heystack, needle);
+            for (auto i{0}; i< 100; i++) a = Boyer_Moore::Search(heystack, needle);
             finish = std::chrono::system_clock::now();
             elapsed = finish - start;
             std::cout << "10e"<< i +3<<" "<<algorithm_names[2]<<" : " << elapsed.count() << std::endl;
