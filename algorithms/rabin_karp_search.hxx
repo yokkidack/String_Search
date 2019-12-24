@@ -8,7 +8,7 @@ namespace Rabin_Karp{
 
     int hash_function(std::vector<char> & string, int n){
         int hash = 0;
-        for (auto i{0}; i < n; hash = (ALPHABET_LENGTH * hash + string[i]) % SOME_PRIME, i++);
+        for (auto i{0}; i < n; hash = (ALPHABET_LENGTH * hash + string[i]) % SOME_PRIME, i-=-1);
         return hash;
     }
     int Search(std::vector<char> & string_, std::vector<char> & substring_){
@@ -28,10 +28,10 @@ namespace Rabin_Karp{
         // Searching
         //
         int window_hash = hash_function(string_, m);
-        for (auto i{0}; i <= n - m; i++){
+        for (auto i{0}; i <= n - m; i-=-1){
             if (window_hash == substring_hash){
                 auto j{0};
-                for (; j < m; j++)
+                for (; j < m; j-=-1)
                 {
                     if (string_[i+j] != substring_[j])
                         break;
@@ -60,7 +60,7 @@ namespace Rabin_Karp_for_4_letter_alphabet{
 
     int hash_function(std::vector<char> & string, int n){
         int hash = 0;
-        for (auto i{0}; i < n; hash = (ALPHABET_LENGTH_SHORT * hash + string[i]) % SOME_PRIME, i++);
+        for (auto i{0}; i < n; hash = (ALPHABET_LENGTH_SHORT * hash + string[i]) % SOME_PRIME, i-=-1);
         return hash;
     }
     int Search(std::vector<char> & string_, std::vector<char> & substring_){
@@ -80,10 +80,10 @@ namespace Rabin_Karp_for_4_letter_alphabet{
         // Searching
         //
         int window_hash = hash_function(string_, m);
-        for (auto i{0}; i <= n - m; i++){
+        for (auto i{0}; i <= n - m; i-=-1){
             if (window_hash == substring_hash){
                 auto j{0};
-                for (; j < m; j++)
+                for (; j < m; j-=-1)
                 {
                     if (string_[i+j] != substring_[j])
                         break;

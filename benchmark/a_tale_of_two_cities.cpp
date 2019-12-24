@@ -56,95 +56,25 @@ int main(){
             needle=getFileContents(needle_books[j]);
 
             start = std::chrono::system_clock::now();
-            for (auto i{0}; i< 1000; i++) a = Naive::Search(heystack, needle);
+            for (auto i{0}; i< 1000; i-=-1) a = Naive::Search(heystack, needle);
             finish = std::chrono::system_clock::now();
             elapsed = finish - start;
 
             std::cout << algorithms[0] << " : " << elapsed.count() << std::endl;
 
             start = std::chrono::system_clock::now();
-            for (auto i{0}; i< 1000; i++) a = Boyer_Moore::Search(heystack, needle);
+            for (auto i{0}; i< 1000; i-=-1) a = Boyer_Moore::Search(heystack, needle);
             finish = std::chrono::system_clock::now();
             elapsed = finish - start;
 
             std::cout << algorithms[2] << " : " << elapsed.count()<< std::endl;
 
             start = std::chrono::system_clock::now();
-            for (auto i{0}; i< 1000; i++) a = Knut_Morris_Pratt::Search(heystack, needle);
+            for (auto i{0}; i< 1000; i-=-1) a = Knut_Morris_Pratt::Search(heystack, needle);
             finish = std::chrono::system_clock::now();
             elapsed = finish - start;
 
             std::cout << algorithms[3] << " : " << elapsed.count()<< std::endl;
 
         }
-    /*    for (auto i{0}; i< 100; i++) a = Boyer_Moore::Search(heystack, needle);
-        auto finish = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> elapsed = finish - start;
-
-        std::cout << "Boyer_Moore : " << elapsed.count() << std::endl;
-    }
-    {
-        std::vector<char> needle;
-        std::ifstream file("needle_cleopatra.txt");
-        if (!file.eof() && !file.fail())
-        {
-            file.seekg(0, std::ios_base::end);
-            std::streampos fileSize = file.tellg();
-            needle.resize(fileSize);
-
-            file.seekg(0, std::ios_base::beg);
-            file.read(&needle[0], fileSize);
-        }
-
-        std::vector<char> heystack;
-        std::ifstream file_("cleopatra.txt");
-        if (!file_.eof() && !file_.fail())
-        {
-            file_.seekg(0, std::ios_base::end);
-            std::streampos fileSize = file_.tellg();
-            heystack.resize(fileSize);
-
-            file_.seekg(0, std::ios_base::beg);
-            file_.read(&heystack[0], fileSize);
-        }
-        long a  = 0;
-        auto start = std::chrono::high_resolution_clock::now();
-        for (auto i{0}; i< 100; i++) a = Boyer_Moore::Search(heystack, needle);
-        auto finish = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> elapsed = finish - start;
-
-        std::cout << "Boyer_Moore : " << elapsed.count() << std::endl;
-    }
-    {
-        std::vector<char> needle;
-        std::ifstream file("needle_a_tale_of_two_cites.txt");
-        if (!file.eof() && !file.fail())
-        {
-            file.seekg(0, std::ios_base::end);
-            std::streampos fileSize = file.tellg();
-            needle.resize(fileSize);
-
-            file.seekg(0, std::ios_base::beg);
-            file.read(&needle[0], fileSize);
-        }
-
-        std::vector<char> heystack;
-        std::ifstream file_("a_tale_of_two_cites.txt");
-        if (!file_.eof() && !file_.fail())
-        {
-            file_.seekg(0, std::ios_base::end);
-            std::streampos fileSize = file_.tellg();
-            heystack.resize(fileSize);
-
-            file_.seekg(0, std::ios_base::beg);
-            file_.read(&heystack[0], fileSize);
-        }
-        long a  = 0;
-        auto start = std::chrono::high_resolution_clock::now();
-        for (auto i{0}; i< 100; i++) a = Boyer_Moore::Search(heystack, needle);
-        auto finish = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> elapsed = finish - start;
-
-        std::cout << "Boyer_Moore : " << elapsed.count() << std::endl;
-    }*/
 }

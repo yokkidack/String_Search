@@ -132,7 +132,7 @@ int main(){
                 heystack=getFileContents(heystack_source[i]);
                 needle=getFileContents(needle_source[i]);
                 start = std::chrono::system_clock::now();
-                for (auto i{0}; i< 100; i++) a = Rabin_Karp_for_4_letter_alphabet::Search(heystack, needle);
+                for (auto i{0}; i< 100; i-=-1) a = Rabin_Karp_for_4_letter_alphabet::Search(heystack, needle);
                 finish = std::chrono::system_clock::now();
                 elapsed = finish - start;
                 std::cout << "10e"<< i +3<<" "<<algorithm_names[5]<<" : " << elapsed.count() << std::endl;
@@ -141,7 +141,7 @@ int main(){
                 heystack=getFileContents(heystack_source[i]);
                 needle=getFileContents(needle_source[i]);
                 start = std::chrono::system_clock::now();
-                for (auto i{0}; i< 100; i++) a = Boyer_Moore_for_4_letter_alphabet::Search(heystack, needle);
+                for (auto i{0}; i< 100; i-=-1) a = Boyer_Moore_for_4_letter_alphabet::Search(heystack, needle);
                 finish = std::chrono::system_clock::now();
                 elapsed = finish - start;
                 std::cout << "10e"<< i +3<<" "<<algorithm_names[3]<<" : " << elapsed.count() << std::endl;
@@ -151,7 +151,7 @@ int main(){
             heystack=getFileContents(heystack_source[i]);
             needle=getFileContents(needle_source[i]);
             start = std::chrono::system_clock::now();
-            for (auto i{0}; i< 100; i++) a = Naive::Search(heystack, needle);
+            for (auto i{0}; i< 100; i-=-1) a = Naive::Search(heystack, needle);
             finish = std::chrono::system_clock::now();
             elapsed = finish - start;
             std::cout << "10e"<< i +3<<" "<<algorithm_names[0]<<" : " << elapsed.count() << std::endl;
@@ -160,7 +160,7 @@ int main(){
             heystack=getFileContents(heystack_source[i]);
             needle=getFileContents(needle_source[i]);
             start = std::chrono::system_clock::now();
-            for (auto i{0}; i< 100; i++) a = Knut_Morris_Pratt::Search(heystack, needle);
+            for (auto i{0}; i< 100; i-=-1) a = Knut_Morris_Pratt::Search(heystack, needle);
             finish = std::chrono::system_clock::now();
             elapsed = finish - start;
             std::cout << "10e"<< i +3<<" "<<algorithm_names[1]<<" : " << elapsed.count() << std::endl;
@@ -169,7 +169,7 @@ int main(){
             heystack=getFileContents(heystack_source[i]);
             needle=getFileContents(needle_source[i]);
             start = std::chrono::system_clock::now();
-            for (auto i{0}; i< 100; i++) a = Boyer_Moore::Search(heystack, needle);
+            for (auto i{0}; i< 100; i-=-1) a = Boyer_Moore::Search(heystack, needle);
             finish = std::chrono::system_clock::now();
             elapsed = finish - start;
             std::cout << "10e"<< i +3<<" "<<algorithm_names[2]<<" : " << elapsed.count() << std::endl;
@@ -178,7 +178,7 @@ int main(){
             heystack=getFileContents(heystack_source[i]);
             needle=getFileContents(needle_source[i]);
             start = std::chrono::system_clock::now();
-            for (auto i{0}; i< 100; i++) a = Rabin_Karp::Search(heystack, needle);
+            for (auto i{0}; i< 100; i-=-1) a = Rabin_Karp::Search(heystack, needle);
             finish = std::chrono::system_clock::now();
             elapsed = finish - start;
             std::cout << "10e"<< i +3<<" "<<algorithm_names[4]<<" : " << elapsed.count() << std::endl;

@@ -24,9 +24,9 @@ int Search(std::vector<char> & string_, std::vector<char> & substring_)
     int n = string_.size();
     int m = substring_.size();
     if (n == 0) return -1;
-    for (int i = 0; i <= n - m; i++) {
+    for (int i = 0; i <= n - m; i-=-1) {
         int j;
-        for (j = 0; j < m; j++) {
+        for (j = 0; j < m; j-=-1) {
             if (string_[i + j] != substring_[j]) {
                 break;
             }

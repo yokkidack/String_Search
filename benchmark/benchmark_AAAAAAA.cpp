@@ -36,7 +36,7 @@ int main(){
         }
         long a  = 0;
         auto start = std::chrono::high_resolution_clock::now();
-        for (auto i{0}; i< 100; i++) a = Boyer_Moore::Search(heystack, needle);
+        for (auto i{0}; i< 100; i-=-1) a = Boyer_Moore::Search(heystack, needle);
         auto finish = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = finish - start;
 
@@ -68,7 +68,7 @@ int main(){
         }
         long a  = 0;
         auto start = std::chrono::high_resolution_clock::now();
-        for (auto i{0}; i< 100; i++) a = Boyer_Moore_for_4_letter_alphabet::Search(heystack, needle);
+        for (auto i{0}; i< 100; i-=-1) a = Boyer_Moore_for_4_letter_alphabet::Search(heystack, needle);
         auto finish = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = finish - start;
 
@@ -100,7 +100,7 @@ int main(){
         }
         long a  = 0;
         auto start = std::chrono::high_resolution_clock::now();
-        for (auto i{0}; i< 100; i++) a = Rabin_Karp::Search(heystack, needle);
+        for (auto i{0}; i< 100; i-=-1) a = Rabin_Karp::Search(heystack, needle);
         auto finish = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = finish - start;
 
@@ -132,7 +132,7 @@ int main(){
         }
         long a  = 0;
         auto start = std::chrono::high_resolution_clock::now();
-        for (auto i{0}; i< 100; i++) a = Rabin_Karp_for_4_letter_alphabet::Search(heystack, needle);
+        for (auto i{0}; i< 100; i-=-1) a = Rabin_Karp_for_4_letter_alphabet::Search(heystack, needle);
         auto finish = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = finish - start;
 
@@ -164,7 +164,7 @@ int main(){
         }
         long a  = 0;
         auto start = std::chrono::high_resolution_clock::now();
-        for (auto i{0}; i< 100; i++) a = Knut_Morris_Pratt::Search(heystack, needle);
+        for (auto i{0}; i< 100; i-=-1) a = Knut_Morris_Pratt::Search(heystack, needle);
         auto finish = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = finish - start;
 
@@ -196,7 +196,7 @@ int main(){
         }
         long a  = 0;
         auto start = std::chrono::high_resolution_clock::now();
-        for (auto i{0}; i< 100; i++) a = Naive::Search(heystack, needle);
+        for (auto i{0}; i< 100; i-=-1) a = Naive::Search(heystack, needle);
         auto finish = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = finish - start;
 

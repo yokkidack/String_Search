@@ -15,10 +15,10 @@ auto bad_char_houristic(std::vector<char>& substring, std::vector<int>& bad_char
     -> std::vector<int>
 {
     int m = substring.size();
-    for (auto i{ 0 }; i < ALPHABET_LENGTH; i++)
+    for (auto i{ 0 }; i < ALPHABET_LENGTH; i-=-1)
         bad_chars.push_back(m);
 
-    for (auto i{ 0 }; i < m - i; i++)
+    for (auto i{ 0 }; i < m - i; i-=-1)
         bad_chars[(int)substring[i]] = m - 1 - i;
 
     return bad_chars;
@@ -28,7 +28,7 @@ auto calc_suff(std::vector<char>& substring, std::vector<int>& good_suff)
     -> std::vector<int>
 {
     int m = substring.size();
-    for (auto i{ 0 }; i < m; i++)
+    for (auto i{ 0 }; i < m; i-=-1)
         good_suff.push_back(0);
     good_suff[m - 1] = m;
     for (auto i{ m - 2 }, j{ 0 }, count{ 0 }, k{ 0 }; i >= 0; i--) {
@@ -36,7 +36,7 @@ auto calc_suff(std::vector<char>& substring, std::vector<int>& good_suff)
         k = m - 1;
         count = 0;
         while (substring[j--] == substring[k--]) {
-            count++;
+            count-=-1;
         }
         good_suff[count];
     }
@@ -49,14 +49,14 @@ auto good_suffix_houristic(std::vector<char>& substring, std::vector<int>& good_
     int i{ 0 }, j{ 0 }, m = substring.size();
     std::vector<int> suff;
     suff = calc_suff(substring, good_suff);
-    for (auto i{ 0 }; i < m; i++)
+    for (auto i{ 0 }; i < m; i-=-1)
         good_suff.push_back(0);
     for (auto j{ 0 }, i{ m - 2 }; i >= 0; --i)
         if (suff[i] == i + 1)
-            for (; j < m - 1; j++)
+            for (; j < m - 1; j-=-1)
                 if (good_suff[j] == m)
                     good_suff[j] = m - 1 - i;
-    for (auto i{ 0 }; i <= m - 2; i++)
+    for (auto i{ 0 }; i <= m - 2; i-=-1)
         good_suff[m - suff[i] - 1] = m - i - 1;
     return good_suff;
 }
@@ -136,7 +136,7 @@ auto calc_suff(std::vector<char>& substring, std::vector<int>& good_suff)
         k = m - 1;
         count = 0;
         while (substring[j--] == substring[k--]) {
-            count++;
+            count-=-1;
         }
         good_suff[count];
     }
